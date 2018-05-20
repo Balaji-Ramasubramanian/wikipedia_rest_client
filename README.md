@@ -1,9 +1,9 @@
 # WikipediaRestClient
 
-wikipedia_rest_client is a ruby gem to ease your usage of Wikipedia REST API. You can find the Wikipedia REST API here. 
-By using this gem we can,
-- Get the Wikipedia page contents for a given topic
-- Featured article
+wikipedia_rest_client is a ruby gem to ease your usage of the Wikipedia REST API. You can find the Wikipedia REST API [here](https://en.wikipedia.org/api/rest_v1/#/). 
+By using this gem we can get the following,
+- Wikipedia page details for a given topic.
+- Featured article.
 - Picture of the day.
 
 ## Installation
@@ -25,7 +25,7 @@ Or install it yourself as:
 ## Usage
 
 ### Page Summary
-It will return the contents from the Wikipedia page for the specified word
+It will return details of the Wikipedia page for the query string
 **Example**
 ```ruby
 page = WikipediaRestClient.get_page("Indian President")
@@ -43,7 +43,7 @@ page.pageid
 page.description
  #=> "executive head of state of the Republic of India"
 ```
-The Page class contains the following informations,
+The Page class contains the following information,
 - type
 - title
 - display_title
@@ -54,7 +54,7 @@ The Page class contains the following informations,
 - titles_display
 - pageid
 - thumbnail_source
-- thumbnail_width
+- thumbnail_width   
 - thumbnail_height
 - lang
 - dir
