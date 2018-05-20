@@ -25,7 +25,9 @@ Or install it yourself as:
 ## Usage
 
 ### Page Summary
-It will return details of the Wikipedia page for the query string
+It will return details of the Wikipedia page for the query string.
+
+
 **Example**
 ```ruby
 page = WikipediaRestClient.get_page("Indian President")
