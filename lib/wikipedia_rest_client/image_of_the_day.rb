@@ -35,9 +35,9 @@ module WikipediaRestClient
 		end
 
 		def description_text
-			@data["thumbnail"]["text"]
+			@data["description"]["text"]
 		end
 
 	end
-	
+
 end
