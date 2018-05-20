@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wikipedia_rest_client (0.0.2)
+    wikipedia_rest_client (0.0.1)
       httparty (~> 0.15.6)
       json (~> 2.0.2)
 
