@@ -1,7 +1,7 @@
 require "wikipedia_rest_client/version"
 require "wikipedia_rest_client/utils"
 require "wikipedia_rest_client/page"
-require "wikipedia_rest_client/today_featured_article"
+require "wikipedia_rest_client/featured_article"
 require "wikipedia_rest_client/image_of_the_day"
 
 require 'httparty'
@@ -29,10 +29,10 @@ module WikipediaRestClient
 
 	end
 
-	def self.get_today_featured_article( date = Time.now.strftime("%Y/%m/%d") )
+	def self.get_featured_article( date = Time.now.strftime("%Y/%m/%d") )
 		url = BASE_URL + FEATURED_ARTICLE + date
 		response = HTTParty.get(url)
-		article = TodayFeaturedArticle.new.today_featured_article(response)
+		article = FeaturedArticle.new.featured_article(response)
 		page = Page.new(article)
 		page
 	end

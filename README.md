@@ -1,10 +1,10 @@
 # WikipediaRestClient
 
-'wikipedia_rest_client' is a ruby gem to extract the contents from Wikipedia page. 
+'wikipedia_rest_client' is a ruby gem to ease your usage of Wikipedia REST API. You can find the Wikipedia REST API here. 
 By using this gem we can,
-- get the wikipedia page contents for given topic
-- Today's featured article
-- Picture of the day from wikipedia webpage.
+- Get the Wikipedia page contents for a given topic
+- Featured article
+- Picture of the day.
 
 ## Installation
 
@@ -24,29 +24,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
-
-##Page Summary
+### Page Summary
 
 **Example**
 ```ruby
-page = WikipediaRestClient.get_page("")
+page = WikipediaRestClient.get_page("Indian President")
   #Returns an object that contains contents of the required page
 page.title
- #=>
+ #=>"President of India"
 page.text
- #=>
+ #=>"The President of the Republic of India is the head of state of India and the commander-in-chief of the Indian Armed Forces."
 page.image_url
- #=>
+ #=>"https://upload.wikimedia.org/wikipedia/commons/8/80/Ram_Nath_Kovind_2017.jpg"
 page.url 
- #=>
+ #=>"https://en.wikipedia.org/wiki/President_of_India"
 page.pageid
- #=>
+ #=>141896
 page.description
- #=>
+ #=>"executive head of state of the Republic of India"
 ```
 
-##Random Article 
+### Random Article 
 
 **Example**
 ```ruby
@@ -65,21 +63,32 @@ page.image_url
 
 ```
 
-##Today's Featured Article
+### Today's Featured Article
 
 ```ruby
-article_of_the_day = WikipediaRestClient.get_today_featured_article
+article_of_the_day = WikipediaRestClient.get_featured_article
 #=>Returns today's featured article
 
-article = WikipediaRestClient.get_today_featured_article(<DATE>)
+article = WikipediaRestClient.get_featured_article(<DATE>) #Date Should be in YYYY/MM/DD Format
 #=>Returns featured article for the specified date
-
-article = WikipediaRestClient.get_today_featured_article("2018/05/10")
-#=> Returns featured article dated (2018/05/10)
-
 ```
 
-##Picture of the day
+**Example**
+```ruby
+old_article = WikipediaRestClient.get_featured_article("2018/05/10")
+#=> Returns featured article dated (2018/05/10)
+article.title
+#=>
+article.image_url
+#=>
+article.text
+#=>
+
+today_article = WikipediaRestClient.get_featured_article
+#=A>
+```
+
+### Picture of the day
 
 **Example**
 ```ruby
@@ -115,4 +124,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the WikipediaRestClient project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/wikipedia_rest_client/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the WikipediaRestClient project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Balaji-Ramasubramanian/wikipedia_rest_client/blob/master/CODE_OF_CONDUCT.md).

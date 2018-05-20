@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.files         = ['lib/wikipedia_rest_client/version.rb',
                         'lib/wikipedia_rest_client/utils.rb',
                         'lib/wikipedia_rest_client/page.rb',
-                        'lib/wikipedia_rest_client/today_featured_article.rb',
+                        'lib/wikipedia_rest_client/featured_article.rb',
                         'lib/wikipedia_rest_client/image_of_the_day.rb'
                         ]
   # spec.files = Dir['lib/**/*.rb']

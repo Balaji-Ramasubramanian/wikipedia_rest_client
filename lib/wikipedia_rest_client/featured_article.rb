@@ -1,8 +1,8 @@
 module WikipediaRestClient
 
-	class TodayFeaturedArticle
+	class FeaturedArticle
 
-		def today_featured_article(json)
+		def featured_article(json)
 			@data = json
 			if @data["tfa"]
 				then 
