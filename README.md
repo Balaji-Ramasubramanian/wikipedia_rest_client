@@ -142,21 +142,33 @@ today_article.pageid
 
 **Example**
 ```ruby
-picture = WikipediaRestClient.get_image_of_the_day
+picture_of_the_day = WikipediaRestClient.get_image_of_the_day
 #=>Returns pictured of the day
-picture.title
+picture_of_the_day.title
 #=>"File:Haus der Kulturen der Welt, Blaue Stunde, Berlin, 160521, ako.jpg"
-picture.image_url
+picture_of_the_day.image_url
 #=>"https://upload.wikimedia.org/wikipedia/commons/2/25/Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg"
-picture.image_height
+picture_of_the_day.image_height
 #=> 3648
-picture.thumbnail
+picture_of_the_day.thumbnail
 #=>"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg/640px-Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg"
-old_picture = WikipediaRestClient.get_image_of_the_day("2017/03/12")
+picture_of_the_day_for_a_date = WikipediaRestClient.get_image_of_the_day("2017/03/12")
 #=>Returns pictured of the day for the specified date ("YYYY/MM/DD")
-old_picture.image_url 
+picture_of_the_day_for_a_date.image_url 
 #=> "https://upload.wikimedia.org/wikipedia/commons/4/4b/Cyclosia_papilionaris-Kadavoor-2016-06-17-001.jpg"
+picture_of_the_day_for_a_date.description_text
+#=>  "<i><a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/Cyclosia%20papilionaris\" title=\"en:Cyclosia papilionaris\">Cyclosia papilionaris</a></i>, Drury's Jewel, is a moth in the <a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/Zygaenidae\" title=\"en:Zygaenidae\">Zygaenidae</a> family. There are many subspecies and this is <i>Cyclosia papilionaris australinda</i> found in <a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/South%20India\" title=\"en:South India\">South India</a>."
 ```
+
+It will have the following information,
+- title
+- image_url
+- image_width
+- image_height
+- thumbnail
+- thumbnail_width
+- thumbnail_height
+- description_text
 
 ## Development
 
