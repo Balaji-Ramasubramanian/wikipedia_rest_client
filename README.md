@@ -130,7 +130,7 @@ article.text
 #=> "Pobeda was the last of the three Peresvet-class pre-dreadnought battleships built for the Imperial Russian Navy at the end of the nineteenth century. The ship was assigned to the Pacific Squadron upon completion and based at Port Arthur from 1903. During the Russo-Japanese War of 1904–1905, she participated in the battles of Port Arthur and the Yellow Sea. Having escaped serious damage in these engagements, Pobeda was sunk by gunfire during the Siege of Port Arthur, and then salvaged by the Japanese and placed into service under the name Suwo (周防)."
 
 today_article = WikipediaRestClient.get_featured_article
-#=Returns featured article of the current day
+#=> Returns featured article of the current day
 today_article.title
 #=> "Arlington,_Washington"
 today_article.url
@@ -145,17 +145,17 @@ today_article.pageid
 **Example**
 ```ruby
 picture_of_the_day = WikipediaRestClient.get_image_of_the_day
-#=>Returns pictured of the day
+#=> Returns pictured of the day
 picture_of_the_day.title
-#=>"File:Haus der Kulturen der Welt, Blaue Stunde, Berlin, 160521, ako.jpg"
+#=> "File:Haus der Kulturen der Welt, Blaue Stunde, Berlin, 160521, ako.jpg"
 picture_of_the_day.image_url
-#=>"https://upload.wikimedia.org/wikipedia/commons/2/25/Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg"
+#=> "https://upload.wikimedia.org/wikipedia/commons/2/25/Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg"
 picture_of_the_day.image_height
 #=> 3648
 picture_of_the_day.thumbnail
-#=>"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg/640px-Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg"
+#=> "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg/640px-Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg"
 picture_of_the_day_for_a_date = WikipediaRestClient.get_image_of_the_day("2017/03/12")
-#=>Returns pictured of the day for the specified date ("YYYY/MM/DD")
+#=> Returns pictured of the day for the specified date ("YYYY/MM/DD")
 picture_of_the_day_for_a_date.image_url 
 #=> "https://upload.wikimedia.org/wikipedia/commons/4/4b/Cyclosia_papilionaris-Kadavoor-2016-06-17-001.jpg"
 picture_of_the_day_for_a_date.description_text
