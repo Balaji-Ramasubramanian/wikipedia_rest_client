@@ -2,6 +2,7 @@ require "wikipedia_rest_client/version"
 require "wikipedia_rest_client/utils"
 require "wikipedia_rest_client/page"
 require "wikipedia_rest_client/today_featured_article"
+require "wikipedia_rest_client/image_of_the_day"
 
 require 'httparty'
 require 'json'
