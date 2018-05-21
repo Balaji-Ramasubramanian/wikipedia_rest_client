@@ -44,4 +44,10 @@ module WikipediaRestClient
 		image
 	end
 
+	def self.get_on_this_day(date = Time.now.strftime("%Y/%m/%d"))
+		url = BASE_URL + FEATURED_ARTICLE + date
+		response = HTTParty.get(url)
+		response["onthisday"]
+	end
+
 end
