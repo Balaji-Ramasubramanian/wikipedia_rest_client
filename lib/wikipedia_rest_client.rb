@@ -54,11 +54,11 @@ module WikipediaRestClient
 	def self.get_news(date = Time.now.strftime("%Y/%m/%d"))
 		url = BASE_URL + FEATURED_ARTICLE + date
 		response = HTTParty.get(url)
-		news = WikipediaRestClient.new.parsed_news(response["news"])
+		news = WikipediaRestClient.parsed_news(response["news"])
 		news
 	end
 
-	def parsed_news(news)
+	def self.parsed_news(news)
 		news.each do |news|
 			data = news["story"]
 			parsed_data = Nokogiri::HTML(data)
