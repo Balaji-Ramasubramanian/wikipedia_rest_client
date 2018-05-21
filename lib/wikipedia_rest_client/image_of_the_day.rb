@@ -39,7 +39,6 @@ module WikipediaRestClient
 			html_data = @data["description"]["text"]
 			parsed_data = Nokogiri::HTML(html_data)
 			parsed_data.text
-
 		end
 
 	end
