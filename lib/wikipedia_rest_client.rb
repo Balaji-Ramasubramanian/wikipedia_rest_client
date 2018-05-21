@@ -54,7 +54,7 @@ module WikipediaRestClient
 	def self.get_news(date = Time.now.strftime("%Y/%m/%d"))
 		url = BASE_URL + FEATURED_ARTICLE + date
 		response = HTTParty.get(url)
-		news = parsed_news(response["news"])
+		news = WikipediaRestClient.new.parsed_news(response["news"])
 		news
 	end
 
