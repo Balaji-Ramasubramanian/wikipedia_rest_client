@@ -1,3 +1,4 @@
+require 'nokogiri'
 module WikipediaRestClient
 
 	class ImageOfTheDay
@@ -35,7 +36,10 @@ module WikipediaRestClient
 		end
 
 		def description_text
-			@data["description"]["text"]
+			html_data = @data["description"]["text"]
+			parsed_data = Nokogiri::HTML(html_data)
+			html_data.text
+
 		end
 
 	end
