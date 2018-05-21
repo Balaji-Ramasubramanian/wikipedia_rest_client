@@ -8,6 +8,7 @@ require 'httparty'
 require 'json'
 require 'date'
 require 'uri'
+require 'nokogiri'
 
 module WikipediaRestClient
   
@@ -49,5 +50,22 @@ module WikipediaRestClient
 		response = HTTParty.get(url)
 		response["onthisday"]
 	end
+
+	def self.get_news(date = Time.now.strftime("%Y/%m/%d"))
+		url = BASE_URL + FEATURED_ARTICLE + date
+		response = HTTParty.get(url)
+		news = parsed_news(response["news"])
+		news
+	end
+
+	def parsed_news(news)
+		news.each do |news|
+			data = news["story"]
+			parsed_data = Nokogiri::HTML(data)
+			news["story"] = parsed_data.text
+		end
+		news
+	end
+
 
 end
