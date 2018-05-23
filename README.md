@@ -179,6 +179,7 @@ It will have the following information,
 on_this_day_content = WikipediaRestClient.get_on_this_day
 #=> Returns 'on this day' contents of the current date
 on_that_day = WikipediaRestClient.get_on_this_day(<DATE>) #Date Should be in YYYY/MM/DD Format
+#=> Returns 'on this day' contents of the specified date
 ```
 
 **Example**
@@ -199,6 +200,14 @@ on_that_day[0]["text"]
 ```
 
 ### Get News
+
+```ruby
+on_this_day_content = WikipediaRestClient.get_news
+#=> Returns 'news' contents of the current date
+on_that_day = WikipediaRestClient.get_news(<DATE>) #Date Should be in YYYY/MM/DD Format
+#=> Returns 'news' contents of the specified date
+```
+
 **Example**
 ```ruby
 news = WikipediaRestClient.get_news
@@ -210,6 +219,14 @@ news[0]["links"]
 ```
 
 ### Most Read Contents
+
+```ruby
+on_this_day_content = WikipediaRestClient.get_most_read
+#=> Returns 'most read' contents of the current date
+on_that_day = WikipediaRestClient.get_most_read(<DATE>) #Date Should be in YYYY/MM/DD Format
+#=> Returns 'most read' contents of the specified date
+```
+
 ***Example***
 ```ruby
 most_read = WikipediaRestClient.get_most_read
