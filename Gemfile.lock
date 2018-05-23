@@ -4,6 +4,7 @@ PATH
     wikipedia_rest_client (0.0.1)
       httparty (~> 0.15.6)
       json (~> 2.0.2)
+      nokogiri (>= 1.6.8)
 
 GEM
   remote: https://rubygems.org/
@@ -12,7 +13,10 @@ GEM
     httparty (0.15.7)
       multi_xml (>= 0.5.2)
     json (2.0.4)
+    mini_portile2 (2.3.0)
     multi_xml (0.6.0)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     rake (10.5.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
@@ -38,4 +42,4 @@ DEPENDENCIES
   wikipedia_rest_client!
 
 BUNDLED WITH
-   1.16.0
+   1.16.2

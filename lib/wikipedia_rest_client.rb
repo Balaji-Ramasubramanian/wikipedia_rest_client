@@ -30,6 +30,7 @@ module WikipediaRestClient
 
 	end
 
+
 	def self.get_featured_article( date = Time.now.strftime("%Y/%m/%d") )
 		url = BASE_URL + FEATURED_ARTICLE + date
 		response = HTTParty.get(url)
@@ -56,6 +57,12 @@ module WikipediaRestClient
 		response = HTTParty.get(url)
 		news = WikipediaRestClient.parsed_news(response["news"])
 		news
+	end
+
+	def self.get_most_read(date = Time.now.strftime("%Y/%m/%d"))
+		url = BASE_URL + FEATURED_ARTICLE + date
+		response = HTTParty.get(url)
+		response["mostread"]
 	end
 
 	def self.parsed_news(news)
