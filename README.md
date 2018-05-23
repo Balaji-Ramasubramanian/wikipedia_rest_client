@@ -172,6 +172,57 @@ It will have the following information,
 - thumbnail_height
 - description_text
 
+
+### On This Day
+
+```ruby
+on_this_day_content = WikipediaRestClient.get_on_this_day
+#=> Returns 'on this day' contents of the current date
+on_that_day = WikipediaRestClient.get_on_this_day(<DATE>) #Date Should be in YYYY/MM/DD Format
+```
+
+**Example**
+```ruby
+on_this_day_content = WikipediaRestClient.get_on_this_day
+#=> Returns Array of page objects
+on_this_day_content[0]["text"]
+#=> "A corroded oil pipeline in Santa Barbara County, California, burst, spilling 142,800 U.S. gallons (3,400 barrels) of crude oil onto one of the most biologically diverse coastlines of the U.S. West Coast."
+on_this_day_content[0]["year"]
+#=> 2013
+on_this_day_content[0]["pages"]
+#=> Returns Array of Wikipedia pages related to that topic
+
+on_that_day = WikipediaRestClient.get_on_this_day("2018/03/11")
+#=> Returns 'on this day' contents for the specified date
+on_that_day[0]["text"]
+#=>  "United States Army officer Robert Bales murdered sixteen civilians and wounded six others in the Panjwayi District of Kandahar Province, Afghanistan."
+```
+
+### Get News
+**Example**
+```ruby
+news = WikipediaRestClient.get_news
+#=> Returns Array of objects which contains news contents
+news[0]["story"]
+#=> "Incumbent Nicolás Maduro is re-elected President of Venezuela."
+news[0]["links"]
+#=>Returns Array of link pages related to that news
+```
+
+### Most Read Contents
+***Example***
+```ruby
+most_read = WikipediaRestClient.get_most_read
+#=> Returns Hash value
+most_read["articles"][0]["views"]
+#=> 709029
+most_read["articles"][0]["title"]
+#=> "Elizabeth_II"
+most_read["articles"][0]["extract"]
+#=> "Elizabeth II is Queen of the United Kingdom and fifteen other Commonwealth realms."
+most_read["articles"][0]["content_urls"]["desktop"]["page"]
+#=> "https://en.wikipedia.org/wiki/Elizabeth_II"
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
