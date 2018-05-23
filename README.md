@@ -185,7 +185,7 @@ on_that_day = WikipediaRestClient.get_on_this_day(<DATE>) #Date Should be in YYY
 **Example**
 ```ruby
 on_this_day_content = WikipediaRestClient.get_on_this_day
-#=> Returns Array of page objects
+#=> Returns Array of Hash values which contains 'on this day' contents
 on_this_day_content[0]["text"]
 #=> "A corroded oil pipeline in Santa Barbara County, California, burst, spilling 142,800 U.S. gallons (3,400 barrels) of crude oil onto one of the most biologically diverse coastlines of the U.S. West Coast."
 on_this_day_content[0]["year"]
@@ -211,7 +211,7 @@ on_that_day = WikipediaRestClient.get_news(<DATE>) #Date Should be in YYYY/MM/DD
 **Example**
 ```ruby
 news = WikipediaRestClient.get_news
-#=> Returns Array of objects which contains news contents
+#=> Returns Array of Hash values which contains news contents
 news[0]["story"]
 #=> "Incumbent Nicolás Maduro is re-elected President of Venezuela."
 news[0]["links"]
