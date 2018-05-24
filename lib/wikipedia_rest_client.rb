@@ -12,10 +12,10 @@ require 'nokogiri'
 
 # @author Balaji
 module WikipediaRestClient
-  	# header options to be passed through HTTP requests
+  	# header options to be passed through HTTP requests.
   	@@options = {}
 	
-	# @param username [String] Email address or URLs of contact pages
+	# @param username [String] Email address or URLs of contact pages.
 	# @return [nil]
 	# This method will setup the User-Agent header to the HTTP request.
 	# Example:
@@ -24,7 +24,7 @@ module WikipediaRestClient
 	#
 	def self.setUserAgent(username)
 		@@options = {
-			headers: {"User-Agent" => username} #set the User-Agent of the HTTP request header
+			headers: {"User-Agent" => username} #set the User-Agent of the HTTP request header.
 		}
 	end
 
@@ -33,62 +33,62 @@ module WikipediaRestClient
 	# This method will Return an object that contains the data about the specified Wikipedia page.
 	# Example:
 	#
-	# 		page = WikipediaRestClient.get_page("Indian President")
-  	# 		Returns an object that contains contents of the required page
-	# 		page.title
- 	# 		=> "President of India"
-	# 		page.text
-	# 		=> "The President of the Republic of India is the head of state of India and the commander-in-chief of the Indian Armed Forces."
-	# 		page.image_url
-	# 		=> <Returns the url of the image>
-	# 		page.url 
-	# 		=> "https://en.wikipedia.org/wiki/President_of_India"
-	# 		page.pageid
-	# 		=> 141896
-	# 		page.description
-	# 		=> "executive head of state of the Republic of India"
+	#      page = WikipediaRestClient.get_page("Indian President")
+  	#      Returns an object that contains contents of the required page
+	#      page.title
+ 	#      => "President of India"
+	#	   page.text
+	# 	   => "The President of the Republic of India is the head of state of India and the commander-in-chief of the Indian Armed Forces."
+	# 	   page.image_url
+	# 	   => <Returns the url of the image>
+	# 	   page.url 
+	# 	   => "https://en.wikipedia.org/wiki/President_of_India"
+	# 	   page.pageid
+	# 	   => 141896
+	# 	   page.description
+	# 	   => "executive head of state of the Republic of India"
 	#
 	# The Page class contains the following information,
 	#
-	# 		- type
-	# 		- title
-	# 		- display_title
-	# 		- namespace_id
-	# 		- namespace_text
-	# 		- titles_canonical
-	# 		- titles_normalized
-	# 		- titles_display
-	# 		- pageid
-	# 		- thumbnail_source
-	# 		- thumbnail_width   
-	# 		- thumbnail_height
-	# 		- lang
-	# 		- dir
-	# 		- revision
-	# 		- tid
-	# 		- timestamp
-	# 		- description
-	# 		- image_url
-	# 		- image_width
-	# 		- image_height
-	# 		- url_desktop_page
-	# 		- url_desktop_revisions
-	# 		- url_desktop_edit
-	# 		- url_desktop_talk
-	# 		- url_mobile_page
-	# 		- url_mobile_revisions
-	# 		- url_mobile_edit
-	# 		- url_mobile_talk
-	# 		- api_urls_summary
-	# 		- api_urls_metadata
-	# 		- api_urls_references
-	# 		- api_urls_media
-	# 		- api_urls_edit_html
-	# 		- api_urls_talk_page_html
-	# 		- text
-	# 		- text_html
-	# 		- normalized_title
-	# 		- url
+	#      - type
+	#      - title
+	#      - display_title
+	#      - namespace_id
+	#      - namespace_text
+	#      - titles_canonical
+	#      - titles_normalized
+	#      - titles_display
+	#      - pageid
+	#      - thumbnail_source
+	#      - thumbnail_width   
+	#      - thumbnail_height
+	#      - lang
+	#      - dir
+	#      - revision
+	#      - tid
+	#      - timestamp
+	#      - description
+	#      - image_url
+	#      - image_width
+	#      - image_height
+	#      - url_desktop_page
+	#      - url_desktop_revisions
+	#      - url_desktop_edit
+	#      - url_desktop_talk
+	#      - url_mobile_page
+	#      - url_mobile_revisions
+	#      - url_mobile_edit
+	#      - url_mobile_talk
+	#      - api_urls_summary
+	#      - api_urls_metadata
+	#      - api_urls_references
+	#      - api_urls_media
+	#      - api_urls_edit_html
+	#      - api_urls_talk_page_html
+	#      - text
+	#      - text_html
+	#      - normalized_title
+	#      - url
 	#
 	def self.get_page(title)
 		title = URI::encode(title)
@@ -102,18 +102,18 @@ module WikipediaRestClient
 	# This method will return a random page from Wikipedia.
 	# Example:
 	# 
-	# 		page = WikipediaRestClient.get_random
-	# 		=> Return a random page from wikipedia 
-	# 		page.title
-	# 		=> "Adams Glacier (Victoria Land)"
-	# 		page.text
-	# 		=> "Adams Glacier is a small glacier immediately south of Miers Glacier in Victoria Land. The heads of Adams and Miers glaciers, both located in the Miers Valley, are separated by a low ridge, and the east end of this ridge is almost completely surrounded by the snouts of the two glaciers, which nearly meet in the bottom of the valley, about 1 mile (1.6 km) above Lake Miers, into which they drain. It was named by the New Zealand Northern Survey Party of the Commonwealth Trans-Antarctic Expedition (1956–58) after Lieutenant Jameson Adams, second in command of the shore party of the British Antarctic Expedition (1907–09), who was one of the men to accompany Ernest Shackleton to within 97 miles (156 km) of the South Pole."
-	# 		page.url
-	# 		=> "https://en.wikipedia.org/wiki/Adams_Glacier_(Victoria_Land)"
-	# 		page.pageid
-	# 		=> 16524953
-	# 		page.image_url
-	# 		=> "<Returns the URL of the image>"
+	#      page = WikipediaRestClient.get_random
+	#      => Return a random page from wikipedia 
+	#      page.title
+	#      => "Adams Glacier (Victoria Land)"
+	#      page.text
+	#      => "Adams Glacier is a small glacier immediately south of Miers Glacier in Victoria Land. The heads of Adams and Miers glaciers, both located in the Miers Valley, are separated by a low ridge, and the east end of this ridge is almost completely surrounded by the snouts of the two glaciers, which nearly meet in the bottom of the valley, about 1 mile (1.6 km) above Lake Miers, into which they drain. It was named by the New Zealand Northern Survey Party of the Commonwealth Trans-Antarctic Expedition (1956–58) after Lieutenant Jameson Adams, second in command of the shore party of the British Antarctic Expedition (1907–09), who was one of the men to accompany Ernest Shackleton to within 97 miles (156 km) of the South Pole."
+	#      page.url
+	#      => "https://en.wikipedia.org/wiki/Adams_Glacier_(Victoria_Land)"
+	#      page.pageid
+	#      => 16524953
+	#      page.image_url
+	#      => "<Returns the URL of the image>"
 	#
 	def self.get_random
 		random_url = BASE_URL + RANDOM_PAGE_URL
@@ -125,7 +125,7 @@ module WikipediaRestClient
 	end
 
 	# @param date [String] The string must be a date in YYYY/MM/DD format. default parameter is current date.
-	# @return [WikipediaRestClient::Page] An object of WikipediaRestClient::Page 
+	# @return [WikipediaRestClient::Page] An object of WikipediaRestClient::Page.
 	# This method will return the featured article of the specified date from Wikipedia(Default parameter is current date).
 	# Example:
 	#
@@ -168,7 +168,7 @@ module WikipediaRestClient
 	# 		picture_of_the_day.image_height
 	# 		=> 3648
 	# 		picture_of_the_day.thumbnail
-	# 		=> "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg/640px-Haus_der_Kulturen_der_Welt%2C_Blaue_Stunde%2C_Berlin%2C_160521%2C_ako.jpg"
+	# 		=> "<Returns the thumbnail URL of the image>"
 	# 		picture_of_the_day_for_a_date = WikipediaRestClient.get_image_of_the_day("2017/03/12")
 	# 		=> Returns pictured of the day for the specified date ("YYYY/MM/DD")
 	# 		picture_of_the_day_for_a_date.image_url 
@@ -220,7 +220,7 @@ module WikipediaRestClient
 	end
 
 	# @param date [String] The string must be a date in YYYY/MM/DD format. default parameter is current date.
-	# @return [JSON] json object that contains news from Wikipedia page.
+	# @return [JSON] json object that contains news contents from Wikipedia page.
 	# This method will return the list of news that is in the form of JSON object. Each news content will contain news and their related links.
 	# Example:
 	# 
