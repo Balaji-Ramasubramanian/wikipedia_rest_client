@@ -60,5 +60,11 @@ RSpec.describe WikipediaRestClient do
 		expect(output.title).to eq 'Augustus_Owsley_Stanley'
 	end
 
+	it 'should return news' do
+		output = WikipediaRestClient.get_news
+		length = output.length
+		expect(length).not_to be nil
+	end
+
 end
 

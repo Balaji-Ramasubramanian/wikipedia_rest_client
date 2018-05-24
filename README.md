@@ -24,6 +24,11 @@ Or install it yourself as:
 
 ## Usage
 
+### Set User Agent 
+Set a unique User-Agent or Api-User-Agent header that allows us to contact you quickly.
+```ruby
+WikipediaRestClient.setUserAgent(< Email addresses or URLs of contact pages >)
+```
 ### Page Summary
 It will return details of the Wikipedia page for the query string.
 
@@ -215,7 +220,7 @@ news = WikipediaRestClient.get_news
 news[0]["story"]
 #=> "Incumbent Nicolás Maduro is re-elected President of Venezuela."
 news[0]["links"]
-#=>Returns Array of link pages related to that news
+#=> Returns Array of link pages related to that news
 ```
 
 ### Most Read Contents
