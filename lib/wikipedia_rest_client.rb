@@ -11,19 +11,27 @@ require 'uri'
 require 'nokogiri'
 
 module WikipediaRestClient
-  
+  	
+  	@@options = {}
+	
+	def self.setUserAgent(username)
+		@@options = {
+			headers: {"User-Agent" => username},
+			debug_outputs: STDOUT
+		}
+	end
 
 	def self.get_page(title)
 		title = URI::encode(title)
 		page_url = BASE_URL + PAGE_URL + title
-		page_response = HTTParty.get(page_url)
+		page_response = HTTParty.get(page_url, @@options)
 		page = Page.new(page_response)
 		page
 	end
 
 	def self.get_random
 		random_url = BASE_URL + RANDOM_PAGE_URL
-		random_page_response = JSON.parse(HTTParty.get(random_url))
+		random_page_response = JSON.parse(HTTParty.get(random_url, @@options))
 		random_title = random_page_response["uri"].gsub("/en.wikipedia.org/v1/page/random/../summary/","")
 		random_page = get_page(random_title)
 		random_page
@@ -33,7 +41,7 @@ module WikipediaRestClient
 
 	def self.get_featured_article( date = Time.now.strftime("%Y/%m/%d") )
 		url = BASE_URL + FEATURED_ARTICLE + date
-		response = HTTParty.get(url)
+		response = HTTParty.get(url, @@options)
 		article = FeaturedArticle.new.featured_article(response)
 		page = Page.new(article)
 		page
@@ -41,27 +49,27 @@ module WikipediaRestClient
 
 	def self.get_image_of_the_day(date = Time.now.strftime("%Y/%m/%d") )
 		url = BASE_URL + FEATURED_ARTICLE + date
-		response = HTTParty.get(url)
+		response = HTTParty.get(url, @@options)
 		image = ImageOfTheDay.new(response)
 		image
 	end
 
 	def self.get_on_this_day(date = Time.now.strftime("%Y/%m/%d"))
 		url = BASE_URL + FEATURED_ARTICLE + date
-		response = HTTParty.get(url)
+		response = HTTParty.get(url, @@options)
 		response["onthisday"]
 	end
 
 	def self.get_news(date = Time.now.strftime("%Y/%m/%d"))
 		url = BASE_URL + FEATURED_ARTICLE + date
-		response = HTTParty.get(url)
+		response = HTTParty.get(url, @@options)
 		news = WikipediaRestClient.parsed_news(response["news"])
 		news
 	end
 
 	def self.get_most_read(date = Time.now.strftime("%Y/%m/%d"))
 		url = BASE_URL + FEATURED_ARTICLE + date
-		response = HTTParty.get(url)
+		response = HTTParty.get(url, @@options)
 		response["mostread"]
 	end
 
