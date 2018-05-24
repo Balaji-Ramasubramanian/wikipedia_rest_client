@@ -22,7 +22,7 @@ module WikipediaRestClient
 			@data["displaytitle"]
 		end
 
-		# Returns the namepade id of the page
+		# Returns the namespace id of the page
 		def namespace_id
 			@data["namespace"]["id"]
 		end
