@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["balaji030698@gmail.com"]
 
   spec.summary       = %q{This is ruby gem for getting Wikipedia contents.}
-  spec.description   = %q{By using this gem, we can get Wikipedia content, today's featured article, and picture of the day from Wikipedia.}
+  spec.description   = %q{By using this gem, we can get Wikipedia page contents, today's featured article, and picture of the day from Wikipedia.}
   spec.homepage      = "https://github.com/Balaji-Ramasubramanian/wikipedia_rest_client.git"
   spec.license       = "MIT"
   spec.files         = ['lib/wikipedia_rest_client/version.rb',

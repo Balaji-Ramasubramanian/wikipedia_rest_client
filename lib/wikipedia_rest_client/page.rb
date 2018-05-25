@@ -1,5 +1,6 @@
 module WikipediaRestClient
 	# WikipediaRestClient::Page class
+	# @author Balaji
 	class Page
 
 		# initialize the data of the Page object

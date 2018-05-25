@@ -5,6 +5,9 @@ By using this gem we can get the following,
 - Wikipedia page details for a given topic.
 - Featured article.
 - Picture of the day.
+- News.
+- Most-read articles of the day.
+- On This Day.
 
 ## Installation
 
@@ -25,13 +28,20 @@ Or install it yourself as:
 ## Usage
 
 ### Set User Agent 
-Set a unique User-Agent or Api-User-Agent header that allows us to contact you quickly.
+Set a unique User-Agent or Api-User-Agent header that allows us to contact you quickly. 
+
+Note: Setting User-Agent is optional but it is a good practice to handle more HTTPS requests for the API.
 ```ruby
 WikipediaRestClient.setUserAgent(< Email addresses or URLs of contact pages >)
 ```
+
+**Example**
+```ruby
+WikipediaRestClient.setUserAgent("someone@gmail.com")
+```
+
 ### Page Summary
 It will return details of the Wikipedia page for the query string.
-
 
 **Example**
 ```ruby
@@ -150,7 +160,7 @@ today_article.pageid
 **Example**
 ```ruby
 picture_of_the_day = WikipediaRestClient.get_image_of_the_day
-#=> Returns pictured of the day
+#=> Returns image of the day from Wikipedia.
 picture_of_the_day.title
 #=> "File:Haus der Kulturen der Welt, Blaue Stunde, Berlin, 160521, ako.jpg"
 picture_of_the_day.image_url
@@ -223,7 +233,7 @@ news[0]["links"]
 #=> Returns Array of link pages related to that news
 ```
 
-### Most Read Contents
+### Most-Read articles of the day
 
 ```ruby
 on_this_day_content = WikipediaRestClient.get_most_read

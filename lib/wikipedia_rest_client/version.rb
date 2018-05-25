@@ -1,3 +1,4 @@
 module WikipediaRestClient
-  VERSION = "0.0.3"
+  # Version number of the gem
+  VERSION = "0.1.0"
 end

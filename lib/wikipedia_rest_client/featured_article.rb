@@ -1,5 +1,6 @@
 module WikipediaRestClient
 
+	# @author Balaji
 	class FeaturedArticle
 
 		# Today's Featured Article from Wikipedia page.

@@ -14,41 +14,43 @@ require 'nokogiri'
 module WikipediaRestClient
   	# header options to be passed through HTTP requests.
   	@@options = {}
-	
-	# @param username [String] Email address or URLs of contact pages.
+	# @param username [String] Email address or URLs of contact pages
 	# @return [nil]
-	# This method will setup the User-Agent header to the HTTP request.
+	# This method will set up the User-Agent header to the HTTP request.
+	#
 	# Example:
 	#
-	# WikipediaRestClient.setUserAgent("someone@gmail.com")
+	#      WikipediaRestClient.setUserAgent("someone@gmail.com")
 	#
 	def self.setUserAgent(username)
 		@@options = {
-			headers: {"User-Agent" => username} #set the User-Agent of the HTTP request header.
+			headers: {"User-Agent" => username}
 		}
 	end
 
-	# @param title [String] A wikipedia page title that has to be fetched.
-	# @return [WikipediaRestClient::Page] WikipediaRestClient::Page object which contains the data about specified title.
-	# This method will Return an object that contains the data about the specified Wikipedia page.
+	# @param title [String] A Wikipedia page title that has to be fetched.
+	# @return [WikipediaRestClient::Page] WikipediaRestClient::Page object which contains the data about the specified title.
+	# This method gets search query as a parameter and returns an object that contains the data about the specified Wikipedia page. 
+	#
 	# Example:
 	#
 	#      page = WikipediaRestClient.get_page("Indian President")
-  	#      Returns an object that contains contents of the required page
+	#      => "<Returns an object that contains contents of the required page>"
 	#      page.title
- 	#      => "President of India"
-	#	   page.text
-	# 	   => "The President of the Republic of India is the head of state of India and the commander-in-chief of the Indian Armed Forces."
-	# 	   page.image_url
-	# 	   => <Returns the url of the image>
-	# 	   page.url 
-	# 	   => "https://en.wikipedia.org/wiki/President_of_India"
-	# 	   page.pageid
-	# 	   => 141896
-	# 	   page.description
-	# 	   => "executive head of state of the Republic of India"
+	#      => "President of India"
+	#      page.text
+	#      => "The President of the Republic of India is the head of state of India and the commander-in-chief of the Indian Armed Forces."
+	#      page.image_url
+	#      => "<Returns the image url of the page>"
+	#      The Page class contains the following information,
+	#      page.url 
+	#      => "https://en.wikipedia.org/wiki/President_of_India"
+	#      page.pageid
+	#      => 141896
+	#      page.description
+	#      => "executive head of state of the Republic of India"
 	#
-	# The Page class contains the following information,
+	# Page class contains the following methods,
 	#
 	#      - type
 	#      - title
@@ -97,9 +99,10 @@ module WikipediaRestClient
 		page = Page.new(page_response)
 		page
 	end
-
-	# @return [WikipediaRestClient::Page] WikipediaRestClient::Page object which return a random page from Wikipedia.
+	# @param null
+	# @return [WikipediaRestClient::Page] WikipediaRestClient::Page object which returns a random page from Wikipedia.
 	# This method will return a random page from Wikipedia.
+	#
 	# Example:
 	# 
 	#      page = WikipediaRestClient.get_random
@@ -124,27 +127,28 @@ module WikipediaRestClient
 
 	end
 
-	# @param date [String] The string must be a date in YYYY/MM/DD format. default parameter is current date.
+	# @param date [String] The string must be a date in YYYY/MM/DD format. The default parameter is the current date.
 	# @return [WikipediaRestClient::Page] An object of WikipediaRestClient::Page.
 	# This method will return the featured article of the specified date from Wikipedia(Default parameter is current date).
+	#
 	# Example:
 	#
-	# 		old_article = WikipediaRestClient.get_featured_article("2018/05/10")
-	# 		=> Returns featured article dated (2018/05/10)
-	# 		article.title
-	# 		=> "Russian_battleship_Pobeda"
-	# 		article.image_url
-	# 		=> "<Returns the URL of the image>"
-	# 		article.text
-	# 		=> "Pobeda was the last of the three Peresvet-class pre-dreadnought battleships built for the Imperial Russian Navy at the end of the nineteenth century. The ship was assigned to the Pacific Squadron upon completion and based at Port Arthur from 1903. During the Russo-Japanese War of 1904–1905, she participated in the battles of Port Arthur and the Yellow Sea. Having escaped serious damage in these engagements, Pobeda was sunk by gunfire during the Siege of Port Arthur, and then salvaged by the Japanese and placed into service under the name Suwo (周防)."
-	# 		today_article = WikipediaRestClient.get_featured_article
-	# 		=> Returns featured article of the current day
-	# 		today_article.title
-	# 		=> "Arlington,_Washington"
-	# 		today_article.url
-	# 		=> "https://en.wikipedia.org/wiki/Arlington,_Washington"
-	# 		today_article.pageid
-	# 		=> 138192
+	#      old_article = WikipediaRestClient.get_featured_article("2018/05/10")
+	#      => Returns featured article dated (2018/05/10)
+	#      article.title
+	#      => "Russian_battleship_Pobeda"
+	#      article.image_url
+	#      => "<Returns the URL of the image>"
+	#      article.text
+	#      => "Pobeda was the last of the three Peresvet-class pre-dreadnought battleships built for the Imperial Russian Navy at the end of the nineteenth century. The ship was assigned to the Pacific Squadron upon completion and based at Port Arthur from 1903. During the Russo-Japanese War of 1904–1905, she participated in the battles of Port Arthur and the Yellow Sea. Having escaped serious damage in these engagements, Pobeda was sunk by gunfire during the Siege of Port Arthur, and then salvaged by the Japanese and placed into service under the name Suwo (周防)."
+	#      today_article = WikipediaRestClient.get_featured_article
+	#      => Returns featured article of the current day
+	#      today_article.title
+	#      => "Arlington,_Washington"
+	#      today_article.url
+	#      => "https://en.wikipedia.org/wiki/Arlington,_Washington"
+	#      today_article.pageid
+	#      => 138192
 	#
 	def self.get_featured_article( date = Time.now.strftime("%Y/%m/%d") )
 		url = BASE_URL + FEATURED_ARTICLE + date
@@ -157,36 +161,37 @@ module WikipediaRestClient
 	# @param date [String] The string must be a date in YYYY/MM/DD format. default parameter is current date.
 	# @return [WikipediaRestClient::IageOfTheDay] An object of WikipediaRestClient::ImageOfTheDay.
 	# This method will return 'Image of the day' content of the specified date from Wikipedia(Default parameter is current date).
+	# 
 	# Example:
 	#
-	# 		picture_of_the_day = WikipediaRestClient.get_image_of_the_day
-	# 		=> Returns pictured of the day
-	# 		picture_of_the_day.title
-	# 		=> "File:Haus der Kulturen der Welt, Blaue Stunde, Berlin, 160521, ako.jpg"
-	# 		picture_of_the_day.image_url
-	# 		=> "<Returns the URL of the image>"
-	# 		picture_of_the_day.image_height
-	# 		=> 3648
-	# 		picture_of_the_day.thumbnail
-	# 		=> "<Returns the thumbnail URL of the image>"
-	# 		picture_of_the_day_for_a_date = WikipediaRestClient.get_image_of_the_day("2017/03/12")
-	# 		=> Returns pictured of the day for the specified date ("YYYY/MM/DD")
-	# 		picture_of_the_day_for_a_date.image_url 
-	# 		=> "<Returns the URL of the image>"
-	# 		picture_of_the_day_for_a_date.description_text
-	# 		=>  "<i><a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/Cyclosia%20papilionaris\" title=\"en:Cyclosia papilionaris\">Cyclosia papilionaris</a></i>, Drury's Jewel, is a moth in the <a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/Zygaenidae\" title=\"en:Zygaenidae\">Zygaenidae</a> family. There are many subspecies and this is <i>Cyclosia papilionaris australinda</i> found in <a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/South%20India\" title=\"en:South India\">South India</a>."
+	#      picture_of_the_day = WikipediaRestClient.get_image_of_the_day
+	#      => Returns picture of the day from Wikipedia.
+	#      picture_of_the_day.title
+	#      => "File:Haus der Kulturen der Welt, Blaue Stunde, Berlin, 160521, ako.jpg"
+	#      picture_of_the_day.image_url
+	#      => "<Returns the URL of the image>"
+	#      picture_of_the_day.image_height
+	#      => 3648
+	#      picture_of_the_day.thumbnail
+	#      => "<Returns the thumbnail URL of the image>"
+	#      picture_of_the_day_for_a_date = WikipediaRestClient.get_image_of_the_day("2017/03/12")
+	#      => Returns pictured of the day for the specified date ("YYYY/MM/DD")
+	#      picture_of_the_day_for_a_date.image_url 
+	#      => "<Returns the URL of the image>"
+	#      picture_of_the_day_for_a_date.description_text
+	#      =>  "<i><a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/Cyclosia%20papilionaris\" title=\"en:Cyclosia papilionaris\">Cyclosia papilionaris</a></i>, Drury's Jewel, is a moth in the <a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/Zygaenidae\" title=\"en:Zygaenidae\">Zygaenidae</a> family. There are many subspecies and this is <i>Cyclosia papilionaris australinda</i> found in <a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/South%20India\" title=\"en:South India\">South India</a>."
 	#	
 	#
 	# It will have the following information,
 	#
-	# 		- title
-	# 		- image_url
-	# 		- image_width
-	# 		- image_height
-	# 		- thumbnail
-	# 		- thumbnail_width
-	# 		- thumbnail_height
-	# 		- description_text
+	#      - title
+	#      - image_url
+	#      - image_width
+	#      - image_height
+	#      - thumbnail
+	#      - thumbnail_width
+	#      - thumbnail_height
+	#      - description_text
 	#
 	def self.get_image_of_the_day(date = Time.now.strftime("%Y/%m/%d") )
 		url = BASE_URL + FEATURED_ARTICLE + date
@@ -195,23 +200,24 @@ module WikipediaRestClient
 		image
 	end
 
-	# @param date [String] The string must be a date in YYYY/MM/DD format. default parameter is current date.
+	# @param date [String] The string must be a date in YYYY/MM/DD format.The default parameter is the current date.
 	# @return [JSON] "on this day" content from Wikipedia. 
-	# This method will be used to get the 'On this day' content from Wikipedia. The default paramether is Current date. If you need you can pass date in YYYY/MM/DD format and get the "on this day " cotent for that specified date.
+	# This method will be used to get the 'On this day' content from Wikipedia. The default parameter is the current date. If you need you can pass a date in YYYY/MM/DD format and get the "on this day " content for that specified date.
+	# 
 	# Example:
 	#
-	# 		on_this_day_content = WikipediaRestClient.get_on_this_day
-	# 		=> Returns Array of Hash values which contains 'on this day' contents
-	# 		on_this_day_content[0]["text"]
-	# 		=> "A corroded oil pipeline in Santa Barbara County, California, burst, spilling 142,800 U.S. gallons (3,400 barrels) of crude oil onto one of the most biologically diverse coastlines of the U.S. West Coast."
-	# 		on_this_day_content[0]["year"]
-	# 		=> 2013
-	# 		on_this_day_content[0]["pages"]
-	# 		=> Returns Array of Wikipedia pages related to that topic
-	# 		on_that_day = WikipediaRestClient.get_on_this_day("2018/03/11")
-	# 		=> Returns 'on this day' contents for the specified date
-	# 		on_that_day[0]["text"]
-	# 		=>  "United States Army officer Robert Bales murdered sixteen civilians and wounded six others in the Panjwayi District of Kandahar Province, Afghanistan."
+	#      on_this_day_content = WikipediaRestClient.get_on_this_day
+	#      => Returns Array of Hash values which contains 'on this day' contents
+	#      on_this_day_content[0]["text"]
+	#      => "A corroded oil pipeline in Santa Barbara County, California, burst, spilling 142,800 U.S. gallons (3,400 barrels) of crude oil onto one of the most biologically diverse coastlines of the U.S. West Coast."
+	#      on_this_day_content[0]["year"]
+	#      => 2013
+	#      on_this_day_content[0]["pages"]
+	#      => Returns Array of Wikipedia pages related to that topic
+	#      on_that_day = WikipediaRestClient.get_on_this_day("2018/03/11")
+	#      => Returns 'on this day' contents for the specified date
+	#      on_that_day[0]["text"]
+	#      =>  "United States Army officer Robert Bales murdered sixteen civilians and wounded six others in the Panjwayi District of Kandahar Province, Afghanistan."
 	#
 	def self.get_on_this_day(date = Time.now.strftime("%Y/%m/%d"))
 		url = BASE_URL + FEATURED_ARTICLE + date
@@ -219,17 +225,18 @@ module WikipediaRestClient
 		response["onthisday"]
 	end
 
-	# @param date [String] The string must be a date in YYYY/MM/DD format. default parameter is current date.
-	# @return [JSON] json object that contains news contents from Wikipedia page.
+	# @param date [String] The string must be a date in YYYY/MM/DD format. The default parameter is the current date.
+	# @return [JSON] JSON object that contains news contents from Wikipedia page.
 	# This method will return the list of news that is in the form of JSON object. Each news content will contain news and their related links.
+	#
 	# Example:
 	# 
-	# 		news = WikipediaRestClient.get_news
-	# 		=> Returns Array of Hash values which contains news contents
-	# 		news[0]["story"]
-	# 		=> "Incumbent Nicolás Maduro is re-elected President of Venezuela."
-	# 		news[0]["links"]
-	# 		=> Returns Array of link pages related to that news
+	#      news = WikipediaRestClient.get_news
+	#      => Returns Array of Hash values which contains news contents
+	#      news[0]["story"]
+	#      => "Incumbent Nicolás Maduro is re-elected President of Venezuela."
+	#      news[0]["links"]
+	#      => Returns Array of link pages related to that news
 	#
 	def self.get_news(date = Time.now.strftime("%Y/%m/%d"))
 		url = BASE_URL + FEATURED_ARTICLE + date
@@ -238,21 +245,22 @@ module WikipediaRestClient
 		news
 	end
 
-	# @param date [String] The string must be a date in YYYY/MM/DD format. default parameter is current date.
-	# @return [JSON]
-	# This method will return the contents of mostread pages and their view counts. 
+	# @param date [String] The string must be a date in YYYY/MM/DD format. The default parameter is the current date.
+	# @return [JSON] an JSON object that contains the most-read contents of the specified date
+	# This method will return the contents of mostread pages of the specified date(Default is current date). 
+	#
 	# Example:
 	#
-	# 		most_read = WikipediaRestClient.get_most_read
-	# 		=> Returns Hash value
-	# 		most_read["articles"][0]["views"]
-	# 		=> 709029
-	# 		most_read["articles"][0]["title"]
-	# 		=> "Elizabeth_II"
-	# 		most_read["articles"][0]["extract"]
-	# 		=> "Elizabeth II is Queen of the United Kingdom and fifteen other Commonwealth realms."
-	# 		most_read["articles"][0]["content_urls"]["desktop"]["page"]
-	# 		=> "https://en.wikipedia.org/wiki/Elizabeth_II"
+	#      most_read = WikipediaRestClient.get_most_read
+	#      => Returns Hash value
+	#      most_read["articles"][0]["views"]
+	#      => 709029
+	#      most_read["articles"][0]["title"]
+	#      => "Elizabeth_II"
+	#      most_read["articles"][0]["extract"]
+	#      => "Elizabeth II is Queen of the United Kingdom and fifteen other Commonwealth realms."
+	#      most_read["articles"][0]["content_urls"]["desktop"]["page"]
+	#      => "https://en.wikipedia.org/wiki/Elizabeth_II"
 	#
 	def self.get_most_read(date = Time.now.strftime("%Y/%m/%d"))
 		url = BASE_URL + FEATURED_ARTICLE + date
@@ -260,8 +268,8 @@ module WikipediaRestClient
 		response["mostread"]
 	end
 
-	# @param news [json] The json object from the get_news method will be used here.
-	# @return [json] Returns the parsed HTML contents inside the json object.
+	# @param news [JSON] The JSON object from the get_news method will be used here.
+	# @return [JSON] Returns the parsed HTML contents inside the JSON object of get_news method.
 	def self.parsed_news(news)
 		news.each do |news|
 			data = news["story"]

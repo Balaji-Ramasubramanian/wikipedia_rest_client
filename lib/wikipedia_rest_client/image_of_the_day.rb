@@ -1,6 +1,7 @@
 require 'nokogiri'
 module WikipediaRestClient
 
+	# @author Balaji
 	class ImageOfTheDay
 
 		# Returns
