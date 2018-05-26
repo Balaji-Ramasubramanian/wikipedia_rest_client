@@ -185,7 +185,7 @@ picture_of_the_day_for_a_date = WikipediaRestClient.get_image_of_the_day("2017/0
 picture_of_the_day_for_a_date.image_url 
 #=> "https://upload.wikimedia.org/wikipedia/commons/4/4b/Cyclosia_papilionaris-Kadavoor-2016-06-17-001.jpg"
 picture_of_the_day_for_a_date.description_text
-#=>  "<i><a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/Cyclosia%20papilionaris\" title=\"en:Cyclosia papilionaris\">Cyclosia papilionaris</a></i>, Drury's Jewel, is a moth in the <a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/Zygaenidae\" title=\"en:Zygaenidae\">Zygaenidae</a> family. There are many subspecies and this is <i>Cyclosia papilionaris australinda</i> found in <a rel=\"mw:WikiLink/Interwiki\" href=\"https://en.wikipedia.org/wiki/South%20India\" title=\"en:South India\">South India</a>."
+#=>  "Cyclosia papilionaris, Drury's Jewel, is a moth in the Zygaenidae family. There are many subspecies and this is Cyclosia papilionaris australinda found in South India."
 ```
 
 It will have the following information,
