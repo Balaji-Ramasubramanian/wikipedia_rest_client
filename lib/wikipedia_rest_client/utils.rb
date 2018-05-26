@@ -1,7 +1,8 @@
 module WikipediaRestClient
 
+	PROTOCOL = "https://"
 	# Base URL of the Wikipedia REST API.
-	BASE_URL = "https://en.wikipedia.org/api/rest_v1"
+	BASE_URL = ".wikipedia.org/api/rest_v1"
 	# URL parameters that are used to fetch the page content. 
 	PAGE_URL = "/page/summary/"
 	# URL parameters that are used to fetch random page from Wikipedia.

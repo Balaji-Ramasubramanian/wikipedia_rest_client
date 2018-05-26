@@ -14,6 +14,7 @@ require 'nokogiri'
 module WikipediaRestClient
   	# header options to be passed through HTTP requests.
   	@@options = {}
+  	@@language_code = "en"
 	# @param username [String] Email address or URLs of contact pages
 	# @return [nil]
 	# This method will set up the User-Agent header to the HTTP request.
@@ -28,6 +29,21 @@ module WikipediaRestClient
 		}
 	end
 
+	# @param language_code [String] The Language that you required
+	# @return [nil]
+	# By using this method you can set the language in the REST API (Default lanuage is English).
+	#
+	# Example:
+	#
+	#      WikipediaRestClient.set_language("de")
+	#      => Setting language as German
+	#      WikipediaRestClient.set_language("fr")
+	#      => Setting language as French  
+	#  
+	def self.set_language(language_code)
+		@@language_code = language_code
+	end
+	
 	# @param title [String] A Wikipedia page title that has to be fetched.
 	# @return [WikipediaRestClient::Page] WikipediaRestClient::Page object which contains the data about the specified title.
 	# This method gets search query as a parameter and returns an object that contains the data about the specified Wikipedia page. 
@@ -94,7 +110,7 @@ module WikipediaRestClient
 	#
 	def self.get_page(title)
 		title = URI::encode(title)
-		page_url = BASE_URL + PAGE_URL + title
+		page_url = PROTOCOL + @@language_code + BASE_URL + PAGE_URL + title
 		page_response = HTTParty.get(page_url, @@options)
 		page = Page.new(page_response)
 		page
@@ -119,7 +135,7 @@ module WikipediaRestClient
 	#      => "<Returns the URL of the image>"
 	#
 	def self.get_random
-		random_url = BASE_URL + RANDOM_PAGE_URL
+		random_url = PROTOCOL + @@language_code + BASE_URL + RANDOM_PAGE_URL
 		random_page_response = JSON.parse(HTTParty.get(random_url, @@options))
 		random_title = random_page_response["uri"].gsub("/en.wikipedia.org/v1/page/random/../summary/","")
 		random_page = get_page(random_title)
@@ -151,7 +167,7 @@ module WikipediaRestClient
 	#      => 138192
 	#
 	def self.get_featured_article( date = Time.now.strftime("%Y/%m/%d") )
-		url = BASE_URL + FEATURED_ARTICLE + date
+		url = PROTOCOL + @@language_code + BASE_URL + FEATURED_ARTICLE + date
 		response = HTTParty.get(url, @@options)
 		article = FeaturedArticle.new.featured_article(response)
 		page = Page.new(article)
@@ -194,7 +210,7 @@ module WikipediaRestClient
 	#      - description_text
 	#
 	def self.get_image_of_the_day(date = Time.now.strftime("%Y/%m/%d") )
-		url = BASE_URL + FEATURED_ARTICLE + date
+		url = PROTOCOL + @@language_code + BASE_URL + FEATURED_ARTICLE + date
 		response = HTTParty.get(url, @@options)
 		image = ImageOfTheDay.new(response)
 		image
@@ -220,7 +236,7 @@ module WikipediaRestClient
 	#      =>  "United States Army officer Robert Bales murdered sixteen civilians and wounded six others in the Panjwayi District of Kandahar Province, Afghanistan."
 	#
 	def self.get_on_this_day(date = Time.now.strftime("%Y/%m/%d"))
-		url = BASE_URL + FEATURED_ARTICLE + date
+		url = PROTOCOL + @@language_code + BASE_URL + FEATURED_ARTICLE + date
 		response = HTTParty.get(url, @@options)
 		response["onthisday"]
 	end
@@ -239,7 +255,7 @@ module WikipediaRestClient
 	#      => Returns Array of link pages related to that news
 	#
 	def self.get_news(date = Time.now.strftime("%Y/%m/%d"))
-		url = BASE_URL + FEATURED_ARTICLE + date
+		url = PROTOCOL + @@language_code + BASE_URL + FEATURED_ARTICLE + date
 		response = HTTParty.get(url, @@options)
 		news = WikipediaRestClient.parsed_news(response["news"])
 		news
@@ -263,7 +279,7 @@ module WikipediaRestClient
 	#      => "https://en.wikipedia.org/wiki/Elizabeth_II"
 	#
 	def self.get_most_read(date = Time.now.strftime("%Y/%m/%d"))
-		url = BASE_URL + FEATURED_ARTICLE + date
+		url = PROTOCOL + @@language_code + BASE_URL + FEATURED_ARTICLE + date
 		response = HTTParty.get(url, @@options)
 		response["mostread"]
 	end
