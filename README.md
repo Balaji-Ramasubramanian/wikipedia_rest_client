@@ -40,6 +40,17 @@ WikipediaRestClient.setUserAgent(< Email addresses or URLs of contact pages >)
 WikipediaRestClient.setUserAgent("someone@gmail.com")
 ```
 
+### Set Language
+By using this method, We can set the language in the REST API (Default lanuage is English).
+
+```ruby
+WikipediaRestClient.set_language(<LANGUAGE_CODE>)
+```
+**Example**
+```ruby
+WikipediaRestClient.set_language("de") # To set the language as German.
+WikipediaRestClient.set_language("fr") # To set the language as French.
+```
 ### Page Summary
 It will return details of the Wikipedia page for the query string.
 

@@ -1,5 +1,6 @@
 module WikipediaRestClient
 
+	# Protocol of the URL
 	PROTOCOL = "https://"
 	# Base URL of the Wikipedia REST API.
 	BASE_URL = ".wikipedia.org/api/rest_v1"

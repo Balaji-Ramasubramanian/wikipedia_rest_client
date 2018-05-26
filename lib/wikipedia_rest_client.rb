@@ -14,6 +14,7 @@ require 'nokogiri'
 module WikipediaRestClient
   	# header options to be passed through HTTP requests.
   	@@options = {}
+  	# language code
   	@@language_code = "en"
 	# @param username [String] Email address or URLs of contact pages
 	# @return [nil]
@@ -29,21 +30,21 @@ module WikipediaRestClient
 		}
 	end
 
-	# @param language_code [String] The Language that you required
+	# @param language_code [String] The Language code 
 	# @return [nil]
 	# By using this method you can set the language in the REST API (Default lanuage is English).
 	#
 	# Example:
 	#
 	#      WikipediaRestClient.set_language("de")
-	#      => Setting language as German
+	#      => Sets the language as German
 	#      WikipediaRestClient.set_language("fr")
-	#      => Setting language as French  
+	#      => Sets the language as French  
 	#  
 	def self.set_language(language_code)
 		@@language_code = language_code
 	end
-	
+
 	# @param title [String] A Wikipedia page title that has to be fetched.
 	# @return [WikipediaRestClient::Page] WikipediaRestClient::Page object which contains the data about the specified title.
 	# This method gets search query as a parameter and returns an object that contains the data about the specified Wikipedia page. 
@@ -115,6 +116,7 @@ module WikipediaRestClient
 		page = Page.new(page_response)
 		page
 	end
+
 	# @param null
 	# @return [WikipediaRestClient::Page] WikipediaRestClient::Page object which returns a random page from Wikipedia.
 	# This method will return a random page from Wikipedia.
