@@ -228,9 +228,9 @@ on_that_day[0]["text"]
 ### Get News
 
 ```ruby
-on_this_day_content = WikipediaRestClient.get_news
+news = WikipediaRestClient.get_news
 #=> Returns 'news' contents of the current date
-on_that_day = WikipediaRestClient.get_news(<DATE>) #Date Should be in YYYY/MM/DD Format
+news_on_specified_date = WikipediaRestClient.get_news(<DATE>) #Date Should be in YYYY/MM/DD Format
 #=> Returns 'news' contents of the specified date
 ```
 
@@ -247,9 +247,9 @@ news[0]["links"]
 ### Most-Read articles of the day
 
 ```ruby
-on_this_day_content = WikipediaRestClient.get_most_read
+most_read_content = WikipediaRestClient.get_most_read
 #=> Returns 'most read' contents of the current date
-on_that_day = WikipediaRestClient.get_most_read(<DATE>) #Date Should be in YYYY/MM/DD Format
+most_read_on_specified_day = WikipediaRestClient.get_most_read(<DATE>) #Date Should be in YYYY/MM/DD Format
 #=> Returns 'most read' contents of the specified date
 ```
 
