@@ -55,29 +55,17 @@ module WikipediaRestClient
 
 		# Returns the source of the thumbnail image
 		def thumbnail_source
-			if @data["thumbnail"] then
-				@data["thumbnail"]["source"]
-			else
-				nil 
-			end
+			@data["thumbnail"]["source"] if @data["thumbnail"]
 		end
 
 		# Returns the width of the thumbnail image
 		def thumbnail_width
-			if @data["thumbnail"] then
-				@data["thumbnail"]["width"]
-			else
-				nil
-			end
+			@data["thumbnail"]["width"] if @data["thumbnail"]
 		end
 
 		# Returns the height of the thumbnail image
 		def thumbnail_height
-			if @data["thumbnail"] then
-				@data["thumbnail"]["height"]
-			else
-				nil
-			end
+			@data["thumbnail"]["height"] if @data["thumbnail"]
 		end
 
 		# Returns the language of that page
@@ -117,12 +105,12 @@ module WikipediaRestClient
 
 		# Returns width of the main image it the page
 		def image_width
-				@data["originalimage"]["width"] if @data["originalimage"]
+			@data["originalimage"]["width"] if @data["originalimage"]
 		end
 
 		# Returns height of the main image it the page
 		def image_height
-				@data["originalimage"]["height"] if @data["originalimage"]
+			@data["originalimage"]["height"] if @data["originalimage"]
 		end
 
 		# Returns page url (desktop)
