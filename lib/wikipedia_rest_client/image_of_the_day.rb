@@ -46,9 +46,11 @@ module WikipediaRestClient
 
 		# Returns description about the image
 		def description_text
-			html_data = @data["description"]["text"]
-			parsed_data = Nokogiri::HTML(html_data)
-			parsed_data.text
+			if @data["description"] 
+				html_data = @data["description"]["text"] 
+				parsed_data = Nokogiri::HTML(html_data)
+				parsed_data.text
+			end
 		end
 
 	end

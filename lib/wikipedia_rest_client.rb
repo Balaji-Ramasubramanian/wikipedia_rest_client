@@ -142,7 +142,6 @@ module WikipediaRestClient
 		random_title = random_page_response["uri"].gsub("/en.wikipedia.org/v1/page/random/../summary/","")
 		random_page = get_page(random_title)
 		random_page
-
 	end
 
 	# @param date [String] The string must be a date in YYYY/MM/DD format. The default parameter is the current date.
